@@ -1,0 +1,8 @@
+DMA_LOOP_blk_mem_gen_0_0.v,verilog,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_blk_mem_gen_0_0/sim/DMA_LOOP_blk_mem_gen_0_0.v,
+DMA_LOOP_axi_bram_ctrl_0_0.vhd,vhdl,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_axi_bram_ctrl_0_0/sim/DMA_LOOP_axi_bram_ctrl_0_0.vhd,
+DMA_LOOP_DATA_GEN_0_0.v,verilog,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_DATA_GEN_0_0/sim/DMA_LOOP_DATA_GEN_0_0.v,
+DMA_LOOP_PL_BRAM_WR_0_0.v,verilog,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_PL_BRAM_WR_0_0/sim/DMA_LOOP_PL_BRAM_WR_0_0.v,
+DMA_LOOP_AXI_DBUF_0_0.v,verilog,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_AXI_DBUF_0_0/sim/DMA_LOOP_AXI_DBUF_0_0.v,
+DMA_LOOP_c_shift_ram_0_0.vhd,vhdl,xil_defaultlib,../../../bd/DMA_LOOP/ip/DMA_LOOP_c_shift_ram_0_0/sim/DMA_LOOP_c_shift_ram_0_0.vhd,
+DMA_LOOP.v,verilog,xil_defaultlib,../../../bd/DMA_LOOP/sim/DMA_LOOP.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

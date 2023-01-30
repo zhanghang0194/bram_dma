@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../bram_dma_loop.srcs/sources_1/new/PL_BRAM_WR.v" \
+"../../../../bram_dma_loop.srcs/sources_1/new/DATA_GEN.v" \
+"../../../../bram_dma_loop.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v" \
+"../../../../bram_dma_loop.srcs/sources_1/new/VID_AXIS.v" \
+"../../../../bram_dma_loop.srcs/sources_1/new/RGB565_888.v" \
+"../../../../bram_dma_loop.srcs/sources_1/new/M_AXI_LITE.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_blk_mem_gen_0_0/sim/DMA_LOOP_blk_mem_gen_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_PL_BRAM_WR_0_0/sim/DMA_LOOP_PL_BRAM_WR_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_DATA_GEN_0_0/sim/DMA_LOOP_DATA_GEN_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_VID_AXIS_0_0/sim/DMA_LOOP_VID_AXIS_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_vio_0_0/sim/DMA_LOOP_vio_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_RGB565_888_0_0/sim/DMA_LOOP_RGB565_888_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/ip/DMA_LOOP_M_AXI_LITE_0_0/sim/DMA_LOOP_M_AXI_LITE_0_0.v" \
+"../../../../bram_dma_loop.ip_user_files/bd/DMA_LOOP/sim/DMA_LOOP.v" \
+"../../../../bram_dma_loop.gen/sources_1/bd/DMA_LOOP/hdl/DMA_LOOP_wrapper.v" \
+
+sv xil_defaultlib  \
+"../../../../bram_dma_loop.srcs/sim_1/new/DMA_LOOP_TEST.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

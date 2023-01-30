@@ -1,0 +1,10 @@
+verilog xil_defaultlib  \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_blk_mem_gen_0_0/sim/DMA_LOOP_blk_mem_gen_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_DATA_GEN_0_0/sim/DMA_LOOP_DATA_GEN_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_PL_BRAM_WR_0_0/sim/DMA_LOOP_PL_BRAM_WR_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_AXI_DBUF_0_0/sim/DMA_LOOP_AXI_DBUF_0_0.v" \
+"../../../bd/DMA_LOOP/sim/DMA_LOOP.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
