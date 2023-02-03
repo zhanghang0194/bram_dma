@@ -198,7 +198,7 @@ module M_AXI_LITE #(
 	        init_txn_ff2 <= init_txn_ff;                                                                 
 	      end                                                                      
 	  end      
-    assign init_txn_pulse	= (!init_txn_ff2) && init_txn_ff && (read_cnt == 0) ;
+    assign init_txn_pulse	= (!init_txn_ff2) && init_txn_ff ;
     
     
     always @(posedge M_AXI_ACLK)
@@ -334,7 +334,7 @@ module M_AXI_LITE #(
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0  || init_txn_pulse == 1'b1)                                
 	          begin                                                 
-	            axi_awaddr <= 'h30;                 // S2MM DMA 控制寄存器  -复位状态                                 
+	            axi_awaddr <= addr_reg[write_index];                                                  
 	          end                                                   
 	          // Signals a new write address/ write data is         
 	          // available by user logic                            
@@ -350,18 +350,18 @@ module M_AXI_LITE #(
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0 || init_txn_pulse == 1'b1 )                                
 	          begin                                                 
-	            cmd_reg[0] <= 32'h4;                       //停止传输
-	            cmd_reg[1] <= BURST_LEN;                   //突发长度
-	            cmd_reg[2] <= 32'h0;                       //固定地址      
+	            cmd_reg[0] <= 32'h0;                       //停止传输
+	            cmd_reg[1] <= 32'h0;                       //固定地址
+	            cmd_reg[2] <= 'd256;                   //突发长度  
 	          end                                                   
 	        // Signals a new write address/ write data is           
 	        // available by user logic                              
 	        else
 	          begin
-	           if(start_flag)cmd_reg[0] <= 32'd1;         // 开始传输
+	           if(init_txn_ff)cmd_reg[0] <= 32'd1;         // 开始传输
 	           else    cmd_reg[0] <= 32'd0;               // 停止传输,复位
 	           cmd_reg[1] <= 32'd0;                       // 固定地址（后续改为递增）
-	           cmd_reg[2] <= BURST_LEN;                     // 长度256（以字节为单位）
+	           cmd_reg[2] <= 'd256;                     // 长度256（以字节为单位）
 	          end    
 	      end  
 	                                                       
@@ -371,8 +371,7 @@ module M_AXI_LITE #(
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0 || init_txn_pulse == 1'b1 )                                
 	          begin                                                 
-	            axi_wdata <= 32'd4;                       //复位
-              
+	            axi_wdata <= cmd_reg[write_index];                       
 	          end                                                   
 	        // Signals a new write address/ write data is           
 	        // available by user logic                              

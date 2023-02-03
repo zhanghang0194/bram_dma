@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="40">
   <CompositeFile CompositeFileTopName="DMA_LOOP" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1675412741"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1675412741"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1675412741"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1675412741"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1675417595"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1675417595"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1675417596"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1675417596"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="synth\DMA_LOOP.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>

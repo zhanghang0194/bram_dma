@@ -19,8 +19,8 @@
       "c_shift_ram_0": "",
       "util_vector_logic_0": "",
       "vio_0": "",
-      "VID_AXIS_0": "",
       "RGB565_888_0": "",
+      "VID_AXIS_0": "",
       "M_AXI_LITE_0": ""
     },
     "ports": {
@@ -420,6 +420,74 @@
           }
         }
       },
+      "RGB565_888_0": {
+        "vlnv": "xilinx.com:module_ref:RGB565_888:1.0",
+        "xci_name": "DMA_LOOP_RGB565_888_0_0",
+        "xci_path": "ip\\DMA_LOOP_RGB565_888_0_0\\DMA_LOOP_RGB565_888_0_0.xci",
+        "inst_hier_path": "RGB565_888_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "RGB565_888",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "pclk": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "default_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "DMA_LOOP_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "h_flag_i": {
+            "direction": "I"
+          },
+          "v_flag_i": {
+            "direction": "I"
+          },
+          "data_i": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "start_flag": {
+            "direction": "I"
+          },
+          "data_en": {
+            "direction": "O"
+          },
+          "h_flag_o": {
+            "direction": "O"
+          },
+          "v_flag_o": {
+            "direction": "O"
+          },
+          "data_o": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          }
+        }
+      },
       "VID_AXIS_0": {
         "vlnv": "xilinx.com:module_ref:VID_AXIS:1.0",
         "xci_name": "DMA_LOOP_VID_AXIS_0_0",
@@ -580,74 +648,6 @@
                 "value_src": "ip_prop"
               }
             }
-          }
-        }
-      },
-      "RGB565_888_0": {
-        "vlnv": "xilinx.com:module_ref:RGB565_888:1.0",
-        "xci_name": "DMA_LOOP_RGB565_888_0_0",
-        "xci_path": "ip\\DMA_LOOP_RGB565_888_0_0\\DMA_LOOP_RGB565_888_0_0.xci",
-        "inst_hier_path": "RGB565_888_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "RGB565_888",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "pclk": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "default_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "DMA_LOOP_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst_n": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
-          },
-          "h_flag_i": {
-            "direction": "I"
-          },
-          "v_flag_i": {
-            "direction": "I"
-          },
-          "data_i": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "start_flag": {
-            "direction": "I"
-          },
-          "data_en": {
-            "direction": "O"
-          },
-          "h_flag_o": {
-            "direction": "O"
-          },
-          "v_flag_o": {
-            "direction": "O"
-          },
-          "data_o": {
-            "direction": "O",
-            "left": "23",
-            "right": "0"
           }
         }
       },
@@ -1067,8 +1067,8 @@
           "DATA_GEN/clk",
           "PL_BRAM_WR/clk",
           "c_shift_ram_0/CLK",
-          "VID_AXIS_0/vid_clk",
-          "RGB565_888_0/pclk"
+          "RGB565_888_0/pclk",
+          "VID_AXIS_0/vid_clk"
         ]
       },
       "rst_n_0_1": {
@@ -1078,8 +1078,8 @@
           "PL_BRAM_WR/rst_n",
           "axi_bram_ctrl/s_axi_aresetn",
           "axi_dma_0/axi_resetn",
-          "VID_AXIS_0/vid_rst_n",
           "RGB565_888_0/rst_n",
+          "VID_AXIS_0/vid_rst_n",
           "M_AXI_LITE_0/M_AXI_ARESETN"
         ]
       },

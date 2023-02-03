@@ -44,7 +44,7 @@ module VID_AXIS(
     //参数定义
     
     //连线
-    assign m_axis_tvalid = ~empty && m_axis_tready && start_axis ;
+    assign m_axis_tvalid = ~empty && m_axis_tready;
     assign m_axis_tkeep = 4'b1111 ;
     assign m_axis_tuser = 1'bx ;
     assign no_empty = ~empty ;
@@ -103,7 +103,7 @@ module VID_AXIS(
         else if(rd_cnt >= 63) begin
             rd_cnt <= 32'd0;
         end
-        else if(m_axis_tvalid && m_axis_tready) begin
+        else if(start_axis && m_axis_tvalid && m_axis_tready) begin
             rd_cnt <= rd_cnt + 1'b1;
         end
     end    

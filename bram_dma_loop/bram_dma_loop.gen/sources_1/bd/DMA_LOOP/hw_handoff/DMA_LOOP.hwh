@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Feb  3 16:25:41 2023" VIVADOVERSION="2022.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Feb  3 17:46:36 2023" VIVADOVERSION="2022.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="DMA_LOOP" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -9,8 +9,8 @@
         <CONNECTION INSTANCE="DATA_GEN" PORT="clk"/>
         <CONNECTION INSTANCE="PL_BRAM_WR" PORT="clk"/>
         <CONNECTION INSTANCE="c_shift_ram_0" PORT="CLK"/>
-        <CONNECTION INSTANCE="VID_AXIS_0" PORT="vid_clk"/>
         <CONNECTION INSTANCE="RGB565_888_0" PORT="pclk"/>
+        <CONNECTION INSTANCE="VID_AXIS_0" PORT="vid_clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst_n">
@@ -19,8 +19,8 @@
         <CONNECTION INSTANCE="PL_BRAM_WR" PORT="rst_n"/>
         <CONNECTION INSTANCE="axi_bram_ctrl" PORT="s_axi_aresetn"/>
         <CONNECTION INSTANCE="axi_dma_0" PORT="axi_resetn"/>
-        <CONNECTION INSTANCE="VID_AXIS_0" PORT="vid_rst_n"/>
         <CONNECTION INSTANCE="RGB565_888_0" PORT="rst_n"/>
+        <CONNECTION INSTANCE="VID_AXIS_0" PORT="vid_rst_n"/>
         <CONNECTION INSTANCE="M_AXI_LITE_0" PORT="M_AXI_ARESETN"/>
       </CONNECTIONS>
     </PORT>
