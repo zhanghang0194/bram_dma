@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Tue Jan 31 10:02:56 2023
+# Process ID: 9044
+# Current directory: D:/Z_MILIANKE_FPGA/0_origin/bram_dma_loop/bram_dma_loop.runs/synth_1
+# Command line: vivado.exe -log DMA_LOOP_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DMA_LOOP_wrapper.tcl
+# Log file: D:/Z_MILIANKE_FPGA/0_origin/bram_dma_loop/bram_dma_loop.runs/synth_1/DMA_LOOP_wrapper.vds
+# Journal file: D:/Z_MILIANKE_FPGA/0_origin/bram_dma_loop/bram_dma_loop.runs/synth_1\vivado.jou
+# Running On: DESKTOP-Q1EFAHP, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 8328 MB
+#-----------------------------------------------------------
+source DMA_LOOP_wrapper.tcl -notrace

@@ -1,11 +1,12 @@
-verilog xil_defaultlib --include "../../../../bram_dma_loop.gen/sources_1/bd/DMA_LOOP/ipshared/1b7e/hdl/verilog" --include "../../../../bram_dma_loop.gen/sources_1/bd/DMA_LOOP/ipshared/122e/hdl/verilog" --include "../../../../bram_dma_loop.gen/sources_1/bd/DMA_LOOP/ipshared/3cb1/hdl" \
-"../../../bd/DMA_LOOP/ip/DMA_LOOP_blk_mem_gen_0_0/sim/DMA_LOOP_blk_mem_gen_0_0.v" \
-"../../../bd/DMA_LOOP/ip/DMA_LOOP_PL_BRAM_WR_0_0/sim/DMA_LOOP_PL_BRAM_WR_0_0.v" \
+verilog xil_defaultlib  \
 "../../../bd/DMA_LOOP/ip/DMA_LOOP_DATA_GEN_0_0/sim/DMA_LOOP_DATA_GEN_0_0.v" \
-"../../../bd/DMA_LOOP/ip/DMA_LOOP_VID_AXIS_0_0/sim/DMA_LOOP_VID_AXIS_0_0.v" \
-"../../../bd/DMA_LOOP/ip/DMA_LOOP_vio_0_0/sim/DMA_LOOP_vio_0_0.v" \
-"../../../bd/DMA_LOOP/ip/DMA_LOOP_RGB565_888_0_0/sim/DMA_LOOP_RGB565_888_0_0.v" \
 "../../../bd/DMA_LOOP/ip/DMA_LOOP_M_AXI_LITE_0_0/sim/DMA_LOOP_M_AXI_LITE_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_PL_BRAM_WR_0_0/sim/DMA_LOOP_PL_BRAM_WR_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_RGB565_888_0_0/sim/DMA_LOOP_RGB565_888_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_blk_mem_gen_0_0/sim/DMA_LOOP_blk_mem_gen_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_util_vector_logic_0_0/sim/DMA_LOOP_util_vector_logic_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_vio_0_0/sim/DMA_LOOP_vio_0_0.v" \
+"../../../bd/DMA_LOOP/ip/DMA_LOOP_VID_AXIS_0_0/sim/DMA_LOOP_VID_AXIS_0_0.v" \
 "../../../bd/DMA_LOOP/sim/DMA_LOOP.v" \
 
 verilog xil_defaultlib "glbl.v"

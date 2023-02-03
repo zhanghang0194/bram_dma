@@ -57,7 +57,6 @@
 module DMA_LOOP_M_AXI_LITE_0_0 (
   data_size,
   start_flag,
-  start_dma,
   M_AXI_ACLK,
   M_AXI_ARESETN,
   M_AXI_AWADDR,
@@ -81,9 +80,8 @@ module DMA_LOOP_M_AXI_LITE_0_0 (
   M_AXI_RREADY
 );
 
-input wire [31 : 0] data_size;
+input wire [15 : 0] data_size;
 input wire start_flag;
-output wire start_dma;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_ACLK, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET M_AXI_ARESETN, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 M_AXI_ACLK CLK" *)
 input wire M_AXI_ACLK;
@@ -134,11 +132,11 @@ output wire M_AXI_RREADY;
   M_AXI_LITE #(
     .C_M_TARGET_SLAVE_BASE_ADDR(16'H0000),
     .C_M_AXI_ADDR_WIDTH(10),
-    .C_M_AXI_DATA_WIDTH(32)
+    .C_M_AXI_DATA_WIDTH(32),
+    .BURST_LEN(256)
   ) inst (
     .data_size(data_size),
     .start_flag(start_flag),
-    .start_dma(start_dma),
     .M_AXI_ACLK(M_AXI_ACLK),
     .M_AXI_ARESETN(M_AXI_ARESETN),
     .M_AXI_AWADDR(M_AXI_AWADDR),

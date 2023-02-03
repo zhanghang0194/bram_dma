@@ -68,7 +68,9 @@ module DMA_LOOP_VID_AXIS_0_0 (
   m_axis_tlast,
   m_axis_tuser,
   m_axis_tvalid,
-  m_axis_tready
+  m_axis_tready,
+  almost_full,
+  no_empty
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME vid_clk, ASSOCIATED_RESET vid_rst_n, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN DMA_LOOP_clk, INSERT_VIP 0" *)
@@ -98,6 +100,8 @@ output wire m_axis_tvalid;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *)
 input wire m_axis_tready;
+output wire almost_full;
+output wire no_empty;
 
   VID_AXIS inst (
     .vid_clk(vid_clk),
@@ -113,6 +117,8 @@ input wire m_axis_tready;
     .m_axis_tlast(m_axis_tlast),
     .m_axis_tuser(m_axis_tuser),
     .m_axis_tvalid(m_axis_tvalid),
-    .m_axis_tready(m_axis_tready)
+    .m_axis_tready(m_axis_tready),
+    .almost_full(almost_full),
+    .no_empty(no_empty)
   );
 endmodule

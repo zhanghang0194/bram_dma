@@ -123,7 +123,7 @@ void DMA_LOOP_axi_bram_ctrl_0_0::before_end_of_elaboration()
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "DMA_LOOP_clk");
+    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "");
 
     mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,16,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
@@ -242,7 +242,7 @@ void DMA_LOOP_axi_bram_ctrl_0_0::before_end_of_elaboration()
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "DMA_LOOP_clk");
+    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "");
 
     mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,16,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
@@ -361,7 +361,7 @@ void DMA_LOOP_axi_bram_ctrl_0_0::before_end_of_elaboration()
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "DMA_LOOP_clk");
+    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "");
 
     mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,16,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
@@ -469,7 +469,7 @@ DMA_LOOP_axi_bram_ctrl_0_0::DMA_LOOP_axi_bram_ctrl_0_0(const sc_core::sc_module_
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "DMA_LOOP_clk");
+    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "");
 
     mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,16,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
   mp_S_AXI_transactor->ARADDR(s_axi_araddr);
@@ -589,7 +589,7 @@ DMA_LOOP_axi_bram_ctrl_0_0::DMA_LOOP_axi_bram_ctrl_0_0(const sc_core::sc_module_
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
-    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "DMA_LOOP_clk");
+    S_AXI_transactor_param_props.addString("CLK_DOMAIN", "");
 
     mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,16,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
   mp_S_AXI_transactor->ARADDR(s_axi_araddr);

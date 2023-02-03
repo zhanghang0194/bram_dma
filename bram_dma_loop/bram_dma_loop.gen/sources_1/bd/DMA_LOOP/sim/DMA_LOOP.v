@@ -1,7 +1,7 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-//Date        : Mon Jan 30 13:52:54 2023
+//Date        : Fri Feb  3 16:25:41 2023
 //Host        : DESKTOP-Q1EFAHP running 64-bit major release  (build 9200)
 //Command     : generate_target DMA_LOOP.bd
 //Design      : DMA_LOOP
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "DMA_LOOP,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=DMA_LOOP,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=10,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=3,da_clkrst_cnt=4,synth_mode=Global}" *) (* HW_HANDOFF = "DMA_LOOP.hwdef" *) 
+(* CORE_GENERATION_INFO = "DMA_LOOP,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=DMA_LOOP,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=3,da_clkrst_cnt=4,synth_mode=Global}" *) (* HW_HANDOFF = "DMA_LOOP.hwdef" *) 
 module DMA_LOOP
    (clk,
     clk_fast,
@@ -50,11 +50,13 @@ module DMA_LOOP
   wire [23:0]RGB565_888_0_data_o;
   wire RGB565_888_0_h_flag_o;
   wire RGB565_888_0_v_flag_o;
+  wire VID_AXIS_0_almost_full;
   wire [31:0]VID_AXIS_0_m_axis_TDATA;
   wire [3:0]VID_AXIS_0_m_axis_TKEEP;
   wire VID_AXIS_0_m_axis_TLAST;
   wire VID_AXIS_0_m_axis_TREADY;
   wire VID_AXIS_0_m_axis_TVALID;
+  wire VID_AXIS_0_no_empty;
   wire [15:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
@@ -84,6 +86,7 @@ module DMA_LOOP
   wire clk_wiz_0_clk_out1;
   wire rst_n_0_1;
   wire start_flag_0_1;
+  wire [0:0]util_vector_logic_0_Res;
   wire [7:0]vio_0_probe_out0;
 
   assign clk_fast_1 = clk_fast;
@@ -118,8 +121,8 @@ module DMA_LOOP
         .M_AXI_WDATA(M_AXI_LITE_0_M_AXI_WDATA),
         .M_AXI_WREADY(M_AXI_LITE_0_M_AXI_WREADY),
         .M_AXI_WVALID(M_AXI_LITE_0_M_AXI_WVALID),
-        .data_size({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .start_flag(start_flag_0_1));
+        .data_size({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .start_flag(util_vector_logic_0_Res));
   DMA_LOOP_PL_BRAM_WR_0_0 PL_BRAM_WR
        (.clk(clk_wiz_0_clk_out1),
         .data_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -141,15 +144,18 @@ module DMA_LOOP
         .h_flag_o(RGB565_888_0_h_flag_o),
         .pclk(clk_wiz_0_clk_out1),
         .rst_n(rst_n_0_1),
+        .start_flag(start_flag_0_1),
         .v_flag_i(DATA_GEN_0_v_flag),
         .v_flag_o(RGB565_888_0_v_flag_o));
   DMA_LOOP_VID_AXIS_0_0 VID_AXIS_0
-       (.m_axis_aclk(clk_fast_1),
+       (.almost_full(VID_AXIS_0_almost_full),
+        .m_axis_aclk(clk_fast_1),
         .m_axis_tdata(VID_AXIS_0_m_axis_TDATA),
         .m_axis_tkeep(VID_AXIS_0_m_axis_TKEEP),
         .m_axis_tlast(VID_AXIS_0_m_axis_TLAST),
         .m_axis_tready(VID_AXIS_0_m_axis_TREADY),
         .m_axis_tvalid(VID_AXIS_0_m_axis_TVALID),
+        .no_empty(VID_AXIS_0_no_empty),
         .vid_alpha(vio_0_probe_out0),
         .vid_clk(clk_wiz_0_clk_out1),
         .vid_data(RGB565_888_0_data_o),
@@ -253,6 +259,10 @@ module DMA_LOOP
        (.CLK(clk_wiz_0_clk_out1),
         .D(axi_bram_ctrl_bram_en_a),
         .Q(c_shift_ram_0_Q));
+  DMA_LOOP_util_vector_logic_0_0 util_vector_logic_0
+       (.Op1(VID_AXIS_0_no_empty),
+        .Op2(VID_AXIS_0_almost_full),
+        .Res(util_vector_logic_0_Res));
   DMA_LOOP_vio_0_0 vio_0
        (.clk(clk_fast_1),
         .probe_out0(vio_0_probe_out0));

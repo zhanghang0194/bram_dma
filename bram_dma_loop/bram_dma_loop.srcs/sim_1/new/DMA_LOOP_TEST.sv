@@ -34,15 +34,14 @@ module DMA_LOOP_TEST();
     initial begin
         clk = 0 ;
         clk_fast = 0 ;
-        rst_n = 1 ;
+        rst_n = 0 ;
         start_flag = 0 ;
-        
-        #100 rst_n = 0;
         
         #100 rst_n = 1;
         
+        
         #100 start_flag = 1 ;
-        #15_00 start_flag = 0 ;
+        #15_000 start_flag = 0 ;
         
         #100 $finish;       
         

@@ -60,6 +60,7 @@ module DMA_LOOP_RGB565_888_0_0 (
   h_flag_i,
   v_flag_i,
   data_i,
+  start_flag,
   data_en,
   h_flag_o,
   v_flag_o,
@@ -73,6 +74,7 @@ input wire rst_n;
 input wire h_flag_i;
 input wire v_flag_i;
 input wire [7 : 0] data_i;
+input wire start_flag;
 output wire data_en;
 output wire h_flag_o;
 output wire v_flag_o;
@@ -84,6 +86,7 @@ output wire [23 : 0] data_o;
     .h_flag_i(h_flag_i),
     .v_flag_i(v_flag_i),
     .data_i(data_i),
+    .start_flag(start_flag),
     .data_en(data_en),
     .h_flag_o(h_flag_o),
     .v_flag_o(v_flag_o),

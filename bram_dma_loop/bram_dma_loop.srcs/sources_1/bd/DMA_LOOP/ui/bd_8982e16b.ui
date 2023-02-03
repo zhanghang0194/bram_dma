@@ -1,51 +1,55 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.812252",
-   "Default View_TopLeft":"733,16",
+   "Default View_ScaleFactor":"1.13516",
+   "Default View_TopLeft":"-4,-43",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
-preplace port port-id_rst_n -pg 1 -lvl 0 -x -10 -y 210 -defaultsOSRD
-preplace port port-id_start_flag -pg 1 -lvl 0 -x -10 -y 490 -defaultsOSRD
-preplace port port-id_clk_fast -pg 1 -lvl 0 -x -10 -y 30 -defaultsOSRD
-preplace portBus data_out -pg 1 -lvl 7 -x 1910 -y 240 -defaultsOSRD
-preplace inst blk_mem_gen -pg 1 -lvl 6 -x 1790 -y 360 -defaultsOSRD
-preplace inst axi_bram_ctrl -pg 1 -lvl 5 -x 1510 -y 140 -defaultsOSRD
-preplace inst PL_BRAM_WR -pg 1 -lvl 5 -x 1510 -y 370 -defaultsOSRD
-preplace inst c_shift_ram_0 -pg 1 -lvl 4 -x 1150 -y 590 -defaultsOSRD
-preplace inst DATA_GEN -pg 1 -lvl 1 -x 160 -y 470 -defaultsOSRD
-preplace inst axi_dma_0 -pg 1 -lvl 4 -x 1150 -y 190 -defaultsOSRD
-preplace inst vio_0 -pg 1 -lvl 2 -x 450 -y 90 -defaultsOSRD
-preplace inst RGB565_888_0 -pg 1 -lvl 2 -x 450 -y 230 -defaultsOSRD
-preplace inst VID_AXIS_0 -pg 1 -lvl 3 -x 790 -y 230 -defaultsOSRD
-preplace inst M_AXI_LITE_0 -pg 1 -lvl 3 -x 790 -y 30 -defaultsOSRD
-preplace netloc DATA_GEN_0_done_flag 1 1 4 N 480 NJ 480 NJ 480 1350J
-preplace netloc DATA_GEN_0_h_flag 1 1 4 310 460 NJ 460 NJ 460 1330J
-preplace netloc DATA_GEN_0_v_flag 1 1 4 300 470 NJ 470 NJ 470 1360J
-preplace netloc DATA_GEN_data_out 1 1 1 290 270n
-preplace netloc PL_BRAM_WR_data_out 1 5 2 1650J 240 NJ
-preplace netloc PL_BRAM_WR_rd_addr 1 5 1 1670 360n
-preplace netloc PL_BRAM_WR_rd_clk 1 5 1 1680 380n
-preplace netloc PL_BRAM_WR_rd_en 1 5 1 1680 420n
-preplace netloc RGB565_888_0_data_o 1 2 1 N 260
-preplace netloc RGB565_888_0_h_flag_o 1 2 1 N 220
-preplace netloc RGB565_888_0_v_flag_o 1 2 1 N 240
-preplace netloc blk_mem_gen_doutb 1 4 2 1370 550 1690J
-preplace netloc c_shift_ram_0_Q 1 4 1 1340 360n
-preplace netloc clk_fast_1 1 0 5 NJ 30 300 20 600 360 970 290 1340J
-preplace netloc clk_wiz_0_clk_out1 1 0 5 30 190 310 30 580 380 960 400 1320J
-preplace netloc rst_n_0_1 1 0 5 10 210 290 10 610 370 960 90 1350
-preplace netloc start_flag_0_1 1 0 3 20 0 NJ 0 620J
-preplace netloc vio_0_probe_out0 1 2 1 590J 90n
-preplace netloc RGB565_888_0_data_en 1 2 1 N 200
-preplace netloc axi_bram_ctrl_bram_en_a 1 3 3 970 520 1320J 540 1660
-preplace netloc VID_AXIS_0_m_axis 1 3 1 N 170
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 5 1 1680 130n
-preplace netloc axi_dma_0_M_AXI_S2MM 1 4 1 1320 120n
-preplace netloc M_AXI_LITE_0_M_AXI 1 3 1 970 20n
-levelinfo -pg 1 -10 160 450 790 1150 1510 1790 1910
-pagesize -pg 1 -db -bbox -sgen -120 -60 2050 660
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_rst_n -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace port port-id_start_flag -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace port port-id_clk_fast -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace portBus data_out -pg 1 -lvl 8 -x 2240 -y 750 -defaultsOSRD
+preplace inst DATA_GEN -pg 1 -lvl 1 -x 160 -y 110 -defaultsOSRD
+preplace inst PL_BRAM_WR -pg 1 -lvl 7 -x 2060 -y 860 -defaultsOSRD
+preplace inst axi_bram_ctrl -pg 1 -lvl 5 -x 1500 -y 640 -defaultsOSRD
+preplace inst axi_dma_0 -pg 1 -lvl 4 -x 1190 -y 640 -defaultsOSRD
+preplace inst blk_mem_gen -pg 1 -lvl 6 -x 1780 -y 690 -defaultsOSRD
+preplace inst c_shift_ram_0 -pg 1 -lvl 6 -x 1780 -y 520 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 510 -y 310 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 2 -x 510 -y 440 -defaultsOSRD
+preplace inst VID_AXIS_0 -pg 1 -lvl 3 -x 860 -y 390 -defaultsOSRD
+preplace inst RGB565_888_0 -pg 1 -lvl 2 -x 510 -y 110 -defaultsOSRD
+preplace inst M_AXI_LITE_0 -pg 1 -lvl 3 -x 860 -y 610 -defaultsOSRD
+preplace netloc DATA_GEN_0_done_flag 1 1 6 290 870 NJ 870 NJ 870 NJ 870 NJ 870 NJ
+preplace netloc DATA_GEN_0_h_flag 1 1 6 310 230 NJ 230 NJ 230 NJ 230 NJ 230 1900J
+preplace netloc DATA_GEN_0_v_flag 1 1 6 300 220 NJ 220 NJ 220 NJ 220 NJ 220 1910J
+preplace netloc DATA_GEN_data_out 1 1 1 N 140
+preplace netloc PL_BRAM_WR_data_out 1 7 1 N 750
+preplace netloc PL_BRAM_WR_rd_addr 1 5 3 1650 1040 NJ 1040 2210
+preplace netloc PL_BRAM_WR_rd_clk 1 5 3 1660 1030 NJ 1030 2220
+preplace netloc PL_BRAM_WR_rd_en 1 5 3 1670 1050 NJ 1050 2200
+preplace netloc RGB565_888_0_data_en 1 2 1 720 80n
+preplace netloc RGB565_888_0_data_o 1 2 1 670 140n
+preplace netloc RGB565_888_0_h_flag_o 1 2 1 710 100n
+preplace netloc RGB565_888_0_v_flag_o 1 2 1 690 120n
+preplace netloc VID_AXIS_0_almost_full 1 1 3 340 520 NJ 520 1000
+preplace netloc VID_AXIS_0_no_empty 1 1 3 330 380 680J 260 1010
+preplace netloc axi_bram_ctrl_bram_en_a 1 5 1 1680 510n
+preplace netloc blk_mem_gen_doutb 1 5 2 1680 930 NJ
+preplace netloc c_shift_ram_0_Q 1 6 1 1890 520n
+preplace netloc clk_fast_1 1 0 5 NJ 440 330 500 720 700 1000 540 1360
+preplace netloc clk_wiz_0_clk_out1 1 0 7 20 10 340 240 700 250 NJ 250 NJ 250 1640 810 1880J
+preplace netloc rst_n_0_1 1 0 7 30 20 320 510 700 710 1010 740 1360 820 NJ 820 1920J
+preplace netloc start_flag_0_1 1 0 2 20 200 330J
+preplace netloc util_vector_logic_0_Res 1 2 1 660 310n
+preplace netloc vio_0_probe_out0 1 2 1 NJ 440
+preplace netloc M_AXI_LITE_0_M_AXI 1 3 1 1010 600n
+preplace netloc VID_AXIS_0_m_axis 1 3 1 1020 370n
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 5 1 N 630
+preplace netloc axi_dma_0_M_AXI_S2MM 1 4 1 N 620
+levelinfo -pg 1 0 160 510 860 1190 1500 1780 2060 2240
+pagesize -pg 1 -db -bbox -sgen -110 0 2380 1060
 "
 }
 {

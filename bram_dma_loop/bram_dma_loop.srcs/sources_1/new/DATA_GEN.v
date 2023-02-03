@@ -34,13 +34,13 @@ module DATA_GEN#(
     output [DATA_WIDTH-1 :0] data_out         //数据出口
 
     );
-    parameter DATA_MAX = 2**DATA_WIDTH -1;
+    parameter DATA_MAX = 2560;
     //wire 定义
     
     //reg 定义
     reg h_flag_reg                          ;
     reg v_flag_reg                          ; 
-    reg [DATA_WIDTH-1:0] data_reg           ; //数据生成寄存器
+    reg [11:0] data_reg                     ; //数据生成寄存器
     reg done_flag_reg                       ; //数据传输结束信号
     //连线
     assign v_flag = v_flag_reg ;
@@ -63,10 +63,10 @@ module DATA_GEN#(
                     data_reg <= data_reg + 1'b1 ;
                     h_flag_reg <= 1'b0;
                     v_flag_reg <= 1'b0;
-                    if(data_reg % 10 == 0)begin         //每10个数出一个行信号
+                    if((data_reg != 0)&&(data_reg % 10 == 0))begin         //每10个数出一个行信号
                        h_flag_reg <= 1'b1; 
                     end
-                    if(data_reg % 256 == 0)begin       //每256个数出一个场信号
+                    if((data_reg != 0)&&(data_reg % 256 == 0))begin       //每256个数出一个场信号
                        v_flag_reg <= 1'b1; 
                     end
                 end

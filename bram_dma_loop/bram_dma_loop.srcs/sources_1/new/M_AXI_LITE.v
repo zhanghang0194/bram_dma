@@ -27,13 +27,14 @@ module M_AXI_LITE #(
 		// Width of M_AXI address bus. 
 		parameter integer C_M_AXI_ADDR_WIDTH	= 10,
 		// Width of M_AXI data bus. 
-		parameter integer C_M_AXI_DATA_WIDTH	= 32
+		parameter integer C_M_AXI_DATA_WIDTH	= 32,
+		
+		parameter BURST_LEN = 256
 )
 (
 		// Users to add ports here
-        input [31:0] data_size,
+        input [15:0] data_size,
         input start_flag,
-        output start_dma,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -137,7 +138,7 @@ module M_AXI_LITE #(
 	//Asserts when there is a read response error
 	wire  	read_resp_error;
 	//A pulse to initiate a write transaction
-	reg  	start_single_write;
+	wire  	start_single_write;
 	//A pulse to initiate a read transaction
 	reg  	start_single_read;
 	//Asserts when a single beat write transaction is issued and remains asserted till the completion of write trasaction.
@@ -154,7 +155,9 @@ module M_AXI_LITE #(
 	reg [1 : 0] 	write_index;
 	//index counter to track the number of read transaction issued
 	reg [1 : 0] 	read_index;
-
+    
+    reg [7:0]   read_cnt ;
+    reg [7:0]   write_cnt ; 
 	//Flag is asserted when the write index reaches the last write transction number
 	wire  	last_write;
 	//Flag is asserted when the read index reaches the last read transction number
@@ -177,7 +180,8 @@ module M_AXI_LITE #(
 	assign M_AXI_WVALID	= axi_wvalid;
 	//Set all byte strobes in this example
 	assign M_AXI_WSTRB	= 4'b1111;
-
+    
+    assign start_single_write = init_txn_ff2 && ~last_write ;
 	   
  	//Generate a pulse to initiate AXI transaction.
 	always @(posedge M_AXI_ACLK)										      
@@ -194,8 +198,22 @@ module M_AXI_LITE #(
 	        init_txn_ff2 <= init_txn_ff;                                                                 
 	      end                                                                      
 	  end      
-    assign init_txn_pulse	= (!init_txn_ff2) && init_txn_ff;
+    assign init_txn_pulse	= (!init_txn_ff2) && init_txn_ff && (read_cnt == 0) ;
     
+    
+    always @(posedge M_AXI_ACLK)
+    begin
+        if (M_AXI_ARESETN == 0)                                                   
+	      begin                                                                    
+	        read_cnt <= 1'b0;                                                   
+	      end
+	    else if (init_txn_ff)begin
+	       read_cnt <= read_cnt + 1'b1;
+	    end
+	    else if (read_cnt == 63)begin
+	       read_cnt <= 1'b0;
+	    end
+    end
     
 	  always @(posedge M_AXI_ACLK)										      
 	  begin                                                                        
@@ -238,7 +256,7 @@ module M_AXI_LITE #(
 	      end                                                                      
 	  end 	  
 	  
-	  assign last_write = (write_index == 3);
+	  assign last_write = (write_index == 2);
 	  //Check for last write completion.                                                
 	                                                                                    
 	  //This logic is to qualify the last write count with the final write              
@@ -284,6 +302,7 @@ module M_AXI_LITE #(
 
 
 	  reg [C_M_AXI_ADDR_WIDTH-1:0]addr_reg[2:0];
+	  //初始化寄存器
 	  always @(posedge M_AXI_ACLK)
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0 || init_txn_pulse == 1'b1 )                                
@@ -315,116 +334,52 @@ module M_AXI_LITE #(
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0  || init_txn_pulse == 1'b1)                                
 	          begin                                                 
-	            axi_awaddr <= 0;                                    
+	            axi_awaddr <= 'h30;                 // S2MM DMA 控制寄存器  -复位状态                                 
 	          end                                                   
 	          // Signals a new write address/ write data is         
 	          // available by user logic                            
 	        else if (M_AXI_AWREADY && axi_awvalid)                  
-	          begin                                                 
-	            axi_awaddr <= addr_reg[write_index];            
-	                                                                
+	          begin
+	           axi_awaddr <= addr_reg[write_index];                      
 	          end                                                   
 	      end                                                       
 	  
-
-	  reg [31:0]cmd_reg[2:0];      
+      //初始化寄存器
+	  reg [31:0]cmd_reg[2:0];    
 	  always @(posedge M_AXI_ACLK)
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0 || init_txn_pulse == 1'b1 )                                
 	          begin                                                 
-	            cmd_reg[0] <= 32'h0;
-	            cmd_reg[1] <= 32'h0;
-	            cmd_reg[2] <= 32'h0;              
+	            cmd_reg[0] <= 32'h4;                       //停止传输
+	            cmd_reg[1] <= BURST_LEN;                   //突发长度
+	            cmd_reg[2] <= 32'h0;                       //固定地址      
 	          end                                                   
 	        // Signals a new write address/ write data is           
 	        // available by user logic                              
 	        else
 	          begin
 	           if(start_flag)cmd_reg[0] <= 32'd1;         // 开始传输
-	           else    cmd_reg[0] <= 32'd0;               // 停止传输
+	           else    cmd_reg[0] <= 32'd0;               // 停止传输,复位
 	           cmd_reg[1] <= 32'd0;                       // 固定地址（后续改为递增）
-	           cmd_reg[2] <= 32'd256;                     // 长度256
+	           cmd_reg[2] <= BURST_LEN;                     // 长度256（以字节为单位）
 	          end    
 	      end  
 	                                                       
-	  reg start_dma_reg;
-	  assign start_dma = start_dma_reg ;	        	                                                           
+        	                                                           
 	  // Write data generation                                      
 	  always @(posedge M_AXI_ACLK)                                  
 	      begin                                                     
 	        if (M_AXI_ARESETN == 0 || init_txn_pulse == 1'b1 )                                
 	          begin                                                 
-	            axi_wdata <= 'd0;   
-	            start_dma_reg <= 1'b0;               
+	            axi_wdata <= 32'd4;                       //复位
+              
 	          end                                                   
 	        // Signals a new write address/ write data is           
 	        // available by user logic                              
 	        else if (M_AXI_WREADY && axi_wvalid)                    
 	          begin                                                 
 	            axi_wdata <= cmd_reg[write_index];
-	            if(write_index >= 'd2)   start_dma_reg <= 1'b1; 
-	            else start_dma_reg <= 1'b0; 
 	          end                                                   
-	      end          	       
-
-
-	  //implement master command interface state machine                         
-	  always @ ( posedge M_AXI_ACLK)                                                    
-	  begin                                                                             
-	    if (M_AXI_ARESETN == 1'b0)                                                     
-	      begin                                                                         
-	      // reset condition                                                            
-	      // All the signals are assigned default values under reset condition          
-	        mst_exec_state  <= IDLE;                                            
-	        start_single_write <= 1'b0;                                                 
-                                                    
-	        start_single_read  <= 1'b0;                                                 
-	      end                                                                           
-	    else                                                                            
-	      begin                                                                         
-	       // state transition                                                          
-	        case (mst_exec_state)                                                       
-	                                                                                    
-	          IDLE:                                                             
-	          // This state is responsible to initiate 
-	          // AXI transaction when init_txn_pulse is asserted 
-	            if ( init_txn_pulse == 1'b1 )                                     
-	              begin                                                                 
-	                mst_exec_state  <= INIT_WRITE;                                      
-	              end                                                                   
-	            else                                                                    
-	              begin                                                                 
-	                mst_exec_state  <= IDLE;                                    
-	              end                                                                   
-	                                                                                    
-	          INIT_WRITE:                                                               
-	            // This state is responsible to issue start_single_write pulse to       
-	            // initiate a write transaction. Write transactions will be             
-	            // issued until last_write signal is asserted.                          
-	            // write controller                                                     
-	            if (writes_done)                                                        
-	              begin                                                                 
-	                mst_exec_state <= IDLE;// 
-	                start_single_write <= 1'b0;                                     
-	              end                                                                   
-	            else                                                                    
-	              begin                                                                 
-	                mst_exec_state  <= INIT_WRITE;                                      
-                                                           
-	                start_single_write <= 1'b1;                                   
-                                       
-                                                             
-                                                           
-                                                            
-	              end                                                                   
-	                                                                                    
-                                                                  
-	           default :                                                                
-	             begin                                                                  
-	               mst_exec_state  <= IDLE;                                     
-	             end                                                                    
-	        endcase                                                                     
-	    end                                                                             
-	  end //MASTER_EXECUTION_PROC      
-    
+	      end          	        
+	         
 endmodule
